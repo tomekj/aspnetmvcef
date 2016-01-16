@@ -1,0 +1,96 @@
+﻿@model SystemEwidencjonowaniaAR.Models.Item
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Szczegóły</h2>
+
+<h3>he??</h3>
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Kategoria Zasobu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriaZasobu)
+        </dd>
+
+        <dt>
+            Nazwa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+
+        <dt>
+            Producent
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producent)
+        </dd>
+
+        <dt>
+            Model
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            Opis
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+        <dt>
+            Numer Seryjny
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NrSeryjny)
+        </dd>
+
+        <dt>
+            Numer Inwentarzowy
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NrInw)
+        </dd>
+
+        <dt>
+            Status
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            Data Wrpowadzenia do systemu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataWrpowadzenia)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Porwrót", "Index")
+        </div>
+    }
+</div>

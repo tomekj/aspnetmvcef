@@ -1,0 +1,84 @@
+﻿@model IEnumerable<SystemEwidencjonowaniaAR.Models.Item>
+
+@{
+    ViewBag.Title = "Baza Środków Trwałych";
+}
+
+<h2>Index</h2>
+<div>
+    @ViewBag.Create
+    @ViewBag.Index
+</div>
+<p>
+    @Html.ActionLink("Wprowadź do bazy nowy środek trwały", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Kategoria Zasobu
+        </th>
+        <th>
+            Nazwa
+        </th>
+        <th>
+            Producent
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Opis
+        </th>
+        <th>
+            Numer Seryjny
+        </th>
+        <th>
+            Numer Inwentarzowy
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Data Wrpowadzenia
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KategoriaZasobu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NrSeryjny)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NrInw)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataWrpowadzenia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
