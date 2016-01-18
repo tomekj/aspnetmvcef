@@ -4,15 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using SystemEwidencjonowaniaAR.Context;
 using SystemEwidencjonowaniaAR.Models;
 
 namespace SystemEwidencjonowaniaAR.Controllers
 {
     public class ItemController : Controller
     {
-        private ItemContext db = new ItemContext();
-        
+        private ApplicationDbContext db = ApplicationDbContext.Create();
+
         // GET: Item
         public ActionResult Index()
         {
@@ -40,7 +39,7 @@ namespace SystemEwidencjonowaniaAR.Controllers
 
         // POST: Item/Create
         [HttpPost]
-        public ActionResult Create(Item item)
+        public ActionResult Create([Bind(Include = "ItemID,CategodyID")]Item item)
         {
             try
             {
@@ -81,7 +80,7 @@ namespace SystemEwidencjonowaniaAR.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                    
+
                 // TODO: Add update logic here
 
                 return RedirectToAction("Index");
@@ -93,19 +92,36 @@ namespace SystemEwidencjonowaniaAR.Controllers
         }
 
         // GET: Item/Delete/5
-        public ActionResult Delete(int id)
+        [HttpGet]
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            Item item = db.Items.Find(id);
+            if (item == null)
+                return HttpNotFound();
+            return View(item);
         }
 
         // POST: Item/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int? id, Item i)
         {
             try
             {
-                // TODO: Add delete logic here
+                Item item = new Item();
+                if (id == null)
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
+                if (ModelState.IsValid)
+                {
+                    item = db.Items.Find(id);
+                    if (item == null)
+                        return HttpNotFound();
+                    db.Items.Remove(item);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
                 return RedirectToAction("Index");
             }
             catch

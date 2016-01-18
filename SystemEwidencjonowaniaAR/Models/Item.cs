@@ -6,14 +6,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
+
 namespace SystemEwidencjonowaniaAR.Models
 {
     public class Item
     {
         [Key]
         public int ID { get; set; }
-        public string KategoriaZasobu { get; set; }
-        [MaxLength(100) MinLength(5)]
+        [MaxLength(100) MinLength(2)]
+        public int CategoryID { get; set; }
         public string Nazwa { get; set; }
         [MaxLength(30)]
         public string Producent { get; set; }
@@ -29,5 +30,8 @@ namespace SystemEwidencjonowaniaAR.Models
         [DefaultValue("nieznany")]
         public string Status { get; set; }
         public DateTime? DataWrpowadzenia { get; set; }
+
+        public virtual Category Category { get; set; }
     }
+
 }

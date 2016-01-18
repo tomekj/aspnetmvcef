@@ -1,26 +1,17 @@
 ﻿@model SystemEwidencjonowaniaAR.Models.Item
 
 @{
-    ViewBag.Title = "Szczegóły";
+    ViewBag.Title = "Details";
 }
 
-<h2>Szczegóły</h2>
+<h2>Details</h2>
 
-<h3>he??</h3>
 <div>
     <h4>Item</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Kategoria Zasobu
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KategoriaZasobu)
-        </dd>
-
-        <dt>
-            Nazwa
+            @Html.DisplayNameFor(model => model.Nazwa)
         </dt>
 
         <dd>
@@ -28,7 +19,7 @@
         </dd>
 
         <dt>
-            Producent
+            @Html.DisplayNameFor(model => model.Producent)
         </dt>
 
         <dd>
@@ -36,7 +27,7 @@
         </dd>
 
         <dt>
-            Model
+            @Html.DisplayNameFor(model => model.Model)
         </dt>
 
         <dd>
@@ -44,7 +35,7 @@
         </dd>
 
         <dt>
-            Opis
+            @Html.DisplayNameFor(model => model.Opis)
         </dt>
 
         <dd>
@@ -52,7 +43,7 @@
         </dd>
 
         <dt>
-            Numer Seryjny
+            @Html.DisplayNameFor(model => model.NrSeryjny)
         </dt>
 
         <dd>
@@ -60,7 +51,7 @@
         </dd>
 
         <dt>
-            Numer Inwentarzowy
+            @Html.DisplayNameFor(model => model.NrInw)
         </dt>
 
         <dd>
@@ -68,7 +59,7 @@
         </dd>
 
         <dt>
-            Status
+            @Html.DisplayNameFor(model => model.Status)
         </dt>
 
         <dd>
@@ -76,7 +67,7 @@
         </dd>
 
         <dt>
-            Data Wrpowadzenia do systemu
+            @Html.DisplayNameFor(model => model.DataWrpowadzenia)
         </dt>
 
         <dd>
@@ -84,13 +75,8 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Porwrót", "Index")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

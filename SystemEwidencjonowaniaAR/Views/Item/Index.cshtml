@@ -1,45 +1,42 @@
 ﻿@model IEnumerable<SystemEwidencjonowaniaAR.Models.Item>
 
 @{
-    ViewBag.Title = "Baza Środków Trwałych";
+    ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-<div>
-    @ViewBag.Create
-    @ViewBag.Index
-</div>
+
 <p>
-    @Html.ActionLink("Wprowadź do bazy nowy środek trwały", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            Kategoria Zasobu
+            @Html.DisplayNameFor(model => model.Category)
         </th>
         <th>
-            Nazwa
+            @Html.DisplayNameFor(model => model.Nazwa)
         </th>
         <th>
-            Producent
+            @Html.DisplayNameFor(model => model.Producent)
         </th>
         <th>
-            Model
+            @Html.DisplayNameFor(model => model.Model)
         </th>
         <th>
-            Opis
+            @Html.DisplayNameFor(model => model.Opis)
         </th>
         <th>
-            Numer Seryjny
+            @Html.DisplayNameFor(model => model.NrSeryjny)
         </th>
         <th>
-            Numer Inwentarzowy
+            @Html.DisplayNameFor(model => model.NrInw)
         </th>
         <th>
-            Status
+            @Html.DisplayNameFor(model => model.Status)
         </th>
         <th>
-            Data Wrpowadzenia
+            @Html.DisplayNameFor(model => model.DataWrpowadzenia)
         </th>
         <th></th>
     </tr>
@@ -47,7 +44,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.KategoriaZasobu)
+            @Html.DisplayFor(modelItem => item.Category)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nazwa)
